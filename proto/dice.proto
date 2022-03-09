@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "github.com/lbrooks/rpg/proto/dice";
+
+message DiceRollRequest {
+  repeated Dice die = 1;
+  uint32 modifier = 2;
+}
+
+message DiceRollResponse {
+  uint64 roll = 1;
+}
+
+message Dice {
+  uint32 count = 1;
+  uint32 sides = 2;
+}
+
+service DiceRollService {
+  rpc DiceRoll(DiceRollRequest) returns (DiceRollResponse);
+}
+
